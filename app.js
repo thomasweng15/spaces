@@ -27,9 +27,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.post('/posts', posts.create);
-app.use('/posts', posts.index);
 app.use('/users', users);
+
+app.post('/posts', posts.create);
+app.put('/posts', posts.update);
+app.get('/posts/:id', posts.show);
+app.del('/posts', posts.delete);
+app.use('/posts', posts.index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
